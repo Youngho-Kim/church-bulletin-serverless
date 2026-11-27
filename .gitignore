@@ -29,6 +29,9 @@
 **/*serviceAccountKey*.json
 **/android/app/google-services.json
 **/ios/Runner/GoogleService-Info.plist
+qa_automation/.env
+qa_artifacts/
+.pytest_cache/
 
 # ==========================================
 # 4. OS 및 임시 백업 파일

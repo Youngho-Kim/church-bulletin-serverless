@@ -1,0 +1,43 @@
+name: Weekly Church Bulletin QA Automation
+
+on:
+  # 매주 토요일 22:00 KST (UTC 13:00), 매주 일요일 07:00 KST (UTC 22:00 토요일) 자동 실행
+  schedule:
+    - cron: '0 13 * * 6'
+    - cron: '0 22 * * 6'
+  # 필요 시 GitHub 화면에서 수동 즉시 실행 가능
+  workflow_dispatch:
+
+jobs:
+  e2e-qa-verification:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 1. Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 2. Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 3. Install Dependencies & Playwright Browsers
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r qa_automation/requirements.txt
+          playwright install chromium
+          playwright install-deps chromium
+
+      - name: 4. Run API Security & UI E2E Tests
+        env:
+          FIREBASE_WEB_API_KEY: ${{ secrets.FIREBASE_WEB_API_KEY }}
+        run: |
+          pytest qa_automation/ -v --html=qa_artifacts/weekly_qa_report.html --self-contained-html
+
+      - name: 5. Upload QA Report & Screenshots (PC/Mobile)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Weekly-QA-Report-${{ github.run_number }}
+          path: qa_artifacts/
+          retention-days: 30
