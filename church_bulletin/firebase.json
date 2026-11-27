@@ -1,0 +1,48 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "daebang-church-bulletin",
+          "appId": "1:34163448650:android:8ff71fddf89ef17963bfb3",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "daebang-church-bulletin",
+          "configurations": {
+            "android": "1:34163448650:android:8ff71fddf89ef17963bfb3",
+            "ios": "1:34163448650:ios:f94fc1111b2b9b6d63bfb3",
+            "web": "1:34163448650:web:e1e106b6c545f97263bfb3"
+          }
+        }
+      }
+    }
+  },
+  "hosting": {
+    "public": "build/web",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "headers": [
+      {
+        "source": "/@(index.html|main.dart.js|flutter_bootstrap.js)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache, no-store, must-revalidate"
+          }
+        ]
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

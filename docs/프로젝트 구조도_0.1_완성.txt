@@ -1,0 +1,15 @@
+church-bulletin-serverless/
+├── docs/
+│   ├── images/
+│   │   ├── pc_viewer.png
+│   │   ├── mobile_viewer.png
+│   │   └── admin_upload.png
+│   ├── 교회_온라인_주보_구축_및_트러블슈팅_보고서.docx
+│   └── 교회_온라인_주보_QA_검증_및_API_명세서.docx
+├── lib/
+│   ├── models/bulletin_model.dart
+│   ├── screens/viewer_screen.dart
+│   ├── screens/admin_screen.dart
+│   └── main.dart
+├── .gitignore
+└── README.md

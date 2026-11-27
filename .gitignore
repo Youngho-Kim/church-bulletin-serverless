@@ -1,0 +1,38 @@
+# ==========================================
+# 1. Flutter & Dart 빌드 및 캐시 파일
+# ==========================================
+**/.dart_tool/
+**/build/
+**/.flutter-plugins
+**/.flutter-plugins-dependencies
+**/.packages
+**/pubspec.lock
+
+# ==========================================
+# 2. IDE 및 편집기 설정 파일
+# ==========================================
+**/.idea/
+**/.vscode/
+**/*.iml
+**/*.ipr
+**/*.iws
+
+# ==========================================
+# 3. Firebase 민감 설정 및 로컬 캐시 (보안 분리)
+# ==========================================
+**/lib/firebase_options.dart
+**/.firebase/
+**/.firebaserc
+**/firebase-debug.log
+**/firestore-debug.log
+**/ui-debug.log
+**/*serviceAccountKey*.json
+**/android/app/google-services.json
+**/ios/Runner/GoogleService-Info.plist
+
+# ==========================================
+# 4. OS 및 임시 백업 파일
+# ==========================================
+.DS_Store
+Thumbs.db
+*.log

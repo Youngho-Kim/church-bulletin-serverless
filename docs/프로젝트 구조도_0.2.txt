@@ -1,0 +1,19 @@
+lib/
+├── main.dart                     # kIsWeb 여부에 따라 AdminApp 또는 MemberApp 분기 실행
+├── models/
+│   ├── bulletin_model.dart       # 주보 데이터 모델 (fromFirestore / toMap)
+│   └── church_info_model.dart    # 고정 교회 정보 모델
+├── services/
+│   ├── auth_service.dart         # 관리자 로그인/로그아웃 (Firebase Auth)
+│   ├── bulletin_service.dart     # 주보 CRUD, 최신 주보 스트림, 지난 주보 페이징 조회
+│   └── storage_service.dart      # PDF 및 선교 소식 이미지 업로드/삭제 (Firebase Storage)
+├── screens_member/               # [성도용 모바일 앱 UI]
+│   ├── home_tab_screen.dart      # 하단 네비게이션 (금주 주보 / 지난 주보 / 교회 안내)
+│   ├── bulletin_detail_view.dart # 주보 상세 화면 (유튜브 플레이어 + 예배순서 + 광고 + PDF 버튼)
+│   ├── pdf_viewer_screen.dart    # 첨부된 원본 주보 PDF 전체화면 확대 뷰어
+│   └── past_bulletins_screen.dart# 지난 주보 게시판 리스트
+└── screens_admin/                # [관리자용 웹 페이지 UI]
+    ├── admin_login_screen.dart   # 관리자 전용 로그인 화면
+    ├── admin_dashboard.dart      # 등록된 주보 목록 관리 (수정/삭제/새 주보 작성 버튼)
+    ├── bulletin_editor_screen.dart # 주보 등록/수정 폼 ('지난 주 데이터 불러오기' 편의 기능 포함)
+    └── church_info_editor.dart   # 예배 시간 및 섬기는 이들 고정 정보 수정 화면
