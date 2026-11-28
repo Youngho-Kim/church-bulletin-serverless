@@ -30,7 +30,9 @@ jobs:
 
       - name: 4. Run API Security & UI E2E Tests
         env:
+          FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
           FIREBASE_WEB_API_KEY: ${{ secrets.FIREBASE_WEB_API_KEY }}
+          BULLETIN_TARGET_URL: ${{ secrets.BULLETIN_TARGET_URL }}
         run: |
           pytest qa_automation/ -v --html=qa_artifacts/weekly_qa_report.html --self-contained-html
 

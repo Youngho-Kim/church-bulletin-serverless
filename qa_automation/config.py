@@ -17,7 +17,11 @@ PROJECT_ID = os.getenv("FIREBASE_PROJECT_ID")
 API_KEY = os.getenv("FIREBASE_WEB_API_KEY")
 TARGET_URL = os.getenv("BULLETIN_TARGET_URL")
 
-assert PROJECT_ID and API_KEY and TARGET_URL, (
-    "필수 설정값이 누락되었습니다. 로컬에서는 qa_automation/.env 파일을 생성하고, "
-    "GitHub Actions에서는 Secrets(FIREBASE_PROJECT_ID, FIREBASE_WEB_API_KEY, BULLETIN_TARGET_URL)를 확인하세요."
-)
+missing = [
+    k for k, v in {
+        "FIREBASE_PROJECT_ID": PROJECT_ID,
+        "FIREBASE_WEB_API_KEY": API_KEY,
+        "BULLETIN_TARGET_URL": TARGET_URL,
+    }.items() if not v
+]
+assert not missing, f"누락된 설정값: {missing} (로컬 .env 또는 GitHub Repository Secrets를 확인하세요)"
